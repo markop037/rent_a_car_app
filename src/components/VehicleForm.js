@@ -35,7 +35,7 @@ function VehicleForm({ addVehicle }){
             <TextField
                 label="Year"
                 value={year}
-                onChange={(e) => setModel(e.target.value)}
+                onChange={(e) => setYear(e.target.value)}
             />
             <TextField
                 label="Price Per Day"
