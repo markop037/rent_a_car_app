@@ -6,36 +6,41 @@ import VehicleCard from './components/VehicleCard';
 import ReservationForm from './components/ReservationForm';
 
 function App() {
-  const [vehicles, setVehicles] = useState([])
-  const [reservations, setReservations] = useState([])
+  const [vehicles, setVehicles] = useState([]);
+  const [reservations, setReservations] = useState([]);
 
   const addVehicle = (vehicle) => {
-    setVehicles([...vehicles, vehicle])
-  }
+    setVehicles([...vehicles, vehicle]);
+  };
 
   const deleteVehicle = (id) => {
-    setVehicles(vehicles.filter(vehicle => vehicle.id !== id))
-  }
+    setVehicles(vehicles.filter(vehicle => vehicle.id !== id));
+  };
 
-  const updateVehicle = (updateVehicle) => {
+  const updateVehicle = (updatedVehicle) => {
     setVehicles(vehicles.map(vehicle =>
-      vehicle.id === updateVehicle.id ? updateVehicle : vehicle
-    ))
-  }
+      vehicle.id === updatedVehicle.id ? updatedVehicle : vehicle
+    ));
+  };
 
-  return(
+  return (
     <div className='App'>
       <h1>Rent-a-Car Agency</h1>
-      <VehicleForm addVehicle={addVehicle}/>
+      <VehicleForm addVehicle={addVehicle} />
       <VehicleList 
         vehicles={vehicles}
         deleteVehicle={deleteVehicle}
+        updateVehicle={updateVehicle}
       />
-      <VehicleCard vehicles={vehicles}/>
-      <ReservationForm reservations={reservations} setReservations={setReservations} vehicles={vehicles} />
+      <VehicleCard vehicles={vehicles} />
+      <ReservationForm 
+        reservations={reservations} 
+        setReservations={setReservations} 
+        vehicles={vehicles} 
+      />
     </div>
-  )
-
+  );
 }
 
 export default App;
+
