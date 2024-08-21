@@ -43,6 +43,7 @@ function ReservationTable({ reservations, vehicles, updateReservation, updateVeh
       <Table>
         <TableHead>
           <TableRow>
+            <TableCell>Vehicle ID</TableCell>
             <TableCell>Model</TableCell>
             <TableCell>Year</TableCell>
             <TableCell>Pick-Up Date</TableCell>
@@ -58,6 +59,7 @@ function ReservationTable({ reservations, vehicles, updateReservation, updateVeh
             const vehicle = vehicles.find(v => v.id === reservation.vehicleId);
             return (
               <TableRow key={reservation.id}>
+                <TableCell>{vehicle ? vehicle.id : 'N/A'}</TableCell> {/* Display Vehicle ID */}
                 <TableCell>{vehicle ? vehicle.model : 'N/A'}</TableCell>
                 <TableCell>{vehicle ? vehicle.year : 'N/A'}</TableCell>
                 <TableCell>{reservation.pickUpDate}</TableCell>
@@ -105,6 +107,7 @@ function ReservationTable({ reservations, vehicles, updateReservation, updateVeh
 }
 
 export default ReservationTable;
+
 
 
 

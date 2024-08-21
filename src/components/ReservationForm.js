@@ -50,14 +50,14 @@ function ReservationForm({ reservations, setReservations, vehicles, updateVehicl
     <form onSubmit={handleSubmit}>
       <TextField
         select
-        label="Select Vehicle"
+        label="Select Vehicle by ID"
         value={vehicleId}
         onChange={(e) => setVehicleId(e.target.value)}
         required
       >
         {vehicles.map(vehicle => (
           <MenuItem key={vehicle.id} value={vehicle.id}>
-            {vehicle.model}
+            Vehicle ID: {vehicle.id} - {vehicle.model}
           </MenuItem>
         ))}
       </TextField>
@@ -86,4 +86,5 @@ function ReservationForm({ reservations, setReservations, vehicles, updateVehicl
 }
 
 export default ReservationForm;
+
 

@@ -9,9 +9,12 @@ import ReservationTable from './components/ReservationTable';
 function App() {
   const [vehicles, setVehicles] = useState([]);
   const [reservations, setReservations] = useState([]);
+  const [nextId, setNextId] = useState(1);
 
   const addVehicle = (vehicle) => {
-    setVehicles([...vehicles, vehicle]);
+    const newVehicle = { ...vehicle, id: nextId };
+    setVehicles([...vehicles, newVehicle]);
+    setNextId(nextId + 1);
   };
 
   const deleteVehicle = (id) => {
