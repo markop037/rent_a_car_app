@@ -4,6 +4,7 @@ import VehicleForm from './components/VehicleForm';
 import VehicleList from './components/VehicleList';
 import VehicleCard from './components/VehicleCard';
 import ReservationForm from './components/ReservationForm';
+import ReservationTable from './components/ReservationTable';
 
 function App() {
   const [vehicles, setVehicles] = useState([]);
@@ -36,11 +37,14 @@ function App() {
       <ReservationForm 
         reservations={reservations} 
         setReservations={setReservations} 
-        vehicles={vehicles} 
+        vehicles={vehicles}
+        updateVehicle={updateVehicle} 
       />
+      <ReservationTable reservations={reservations} vehicles={vehicles} />
     </div>
   );
 }
 
 export default App;
+
 

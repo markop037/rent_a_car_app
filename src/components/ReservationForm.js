@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TextField, Button, MenuItem } from '@mui/material';
 
-function ReservationForm({ reservations, setReservations, vehicles }) {
+function ReservationForm({ reservations, setReservations, vehicles, updateVehicle }) {
   const [vehicleId, setVehicleId] = useState('');
   const [pickUpDate, setPickUpDate] = useState('');
   const [returnDate, setReturnDate] = useState('');
@@ -21,6 +21,9 @@ function ReservationForm({ reservations, setReservations, vehicles }) {
       customerRating: 0,
     };
     setReservations([...reservations, newReservation]);
+
+    const updatedVehicle = { ...vehicle, available: false };
+    updateVehicle(updatedVehicle);
   };
 
   return (
@@ -62,3 +65,4 @@ function ReservationForm({ reservations, setReservations, vehicles }) {
 }
 
 export default ReservationForm;
+

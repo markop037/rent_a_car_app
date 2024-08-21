@@ -18,7 +18,7 @@ function VehicleList({ vehicles, deleteVehicle, updateVehicle }) {
   };
 
   return (
-    <>
+    <Box sx={{ paddingBottom: '30px' }}>  {/* Dodaje padding na dnu */}
       <Table>
         <TableHead>
           <TableRow>
@@ -117,8 +117,9 @@ function VehicleList({ vehicles, deleteVehicle, updateVehicle }) {
           </Box>
         </Modal>
       )}
-    </>
+    </Box>
   );
 }
 
 export default VehicleList;
+
