@@ -1,5 +1,5 @@
-import './App.css';
 import React, { useState } from 'react';
+import './App.css';
 import VehicleForm from './components/VehicleForm';
 import VehicleList from './components/VehicleList';
 import VehicleCard from './components/VehicleCard';
@@ -24,6 +24,33 @@ function App() {
     ));
   };
 
+  const updateVehicleAvailability = (vehicleId, available) => {
+    setVehicles(vehicles.map(vehicle =>
+      vehicle.id === vehicleId ? { ...vehicle, available } : vehicle
+    ));
+  };
+
+  const updateVehicleRating = (vehicleId, newRating) => {
+    setVehicles(vehicles.map(vehicle => {
+      if (vehicle.id === vehicleId) {
+        const updatedRatings = [...vehicle.ratings, newRating];
+        return { 
+          ...vehicle, 
+          ratings: updatedRatings 
+        };
+      }
+      return vehicle;
+    }));
+  };
+
+  const addReservation = (reservation) => {
+    setReservations([...reservations, reservation]);
+  };
+
+  const updateReservation = (updatedReservations) => {
+    setReservations(updatedReservations);
+  };
+
   return (
     <div className='App'>
       <h1>Rent-a-Car Agency</h1>
@@ -32,19 +59,31 @@ function App() {
         vehicles={vehicles}
         deleteVehicle={deleteVehicle}
         updateVehicle={updateVehicle}
+        updateVehicleRating={updateVehicleRating}
       />
       <VehicleCard vehicles={vehicles} />
       <ReservationForm 
         reservations={reservations} 
         setReservations={setReservations} 
         vehicles={vehicles}
+        addReservation={addReservation}  
         updateVehicle={updateVehicle} 
       />
-      <ReservationTable reservations={reservations} vehicles={vehicles} />
+      <ReservationTable 
+        reservations={reservations} 
+        vehicles={vehicles} 
+        updateReservation={updateReservation} 
+        updateVehicleAvailability={updateVehicleAvailability} 
+        updateVehicleRating={updateVehicleRating}
+      />
     </div>
   );
 }
 
 export default App;
+
+
+
+
 
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Table, TableBody, TableCell, TableHead, TableRow, Button, Modal, Box, TextField, Checkbox, FormControlLabel } from '@mui/material';
 
-function VehicleList({ vehicles, deleteVehicle, updateVehicle }) {
+function VehicleList({ vehicles, deleteVehicle, updateVehicle, updateVehicleRating }) {
   const [editVehicle, setEditVehicle] = useState(null);
 
   const handleEditClick = (vehicle) => {
@@ -18,7 +18,7 @@ function VehicleList({ vehicles, deleteVehicle, updateVehicle }) {
   };
 
   return (
-    <Box sx={{ paddingBottom: '30px' }}>  {/* Dodaje padding na dnu */}
+    <Box sx={{ paddingBottom: '30px' }}>
       <Table>
         <TableHead>
           <TableRow>
@@ -122,4 +122,6 @@ function VehicleList({ vehicles, deleteVehicle, updateVehicle }) {
 }
 
 export default VehicleList;
+
+
 
