@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './App.css';
+import { Container, Grid, Typography, Paper, Box } from '@mui/material';
 import VehicleForm from './components/VehicleForm';
 import VehicleList from './components/VehicleList';
 import VehicleCard from './components/VehicleCard';
@@ -55,35 +55,85 @@ function App() {
   };
 
   return (
-    <div className='App'>
-      <h1>Rent-a-Car Agency</h1>
-      <VehicleForm addVehicle={addVehicle} />
-      <VehicleList 
-        vehicles={vehicles}
-        deleteVehicle={deleteVehicle}
-        updateVehicle={updateVehicle}
-        updateVehicleRating={updateVehicleRating}
-      />
-      <VehicleCard vehicles={vehicles} />
-      <ReservationForm 
-        reservations={reservations} 
-        setReservations={setReservations} 
-        vehicles={vehicles}
-        addReservation={addReservation}  
-        updateVehicle={updateVehicle} 
-      />
-      <ReservationTable 
-        reservations={reservations} 
-        vehicles={vehicles} 
-        updateReservation={updateReservation} 
-        updateVehicleAvailability={updateVehicleAvailability} 
-        updateVehicleRating={updateVehicleRating}
-      />
-    </div>
+    <Container>
+      <Typography variant="h3" gutterBottom align="center"  sx={{ paddingTop: '30px', paddingBottom: '30px' }}>
+        Rent A Car Agency
+      </Typography>
+      <Grid container spacing={3}>
+        <Grid item xs={12} md={6}>
+          <Paper elevation={3}>
+            <Box padding={2}>
+              <Typography variant="h6" gutterBottom>
+                Add New Vehicle
+              </Typography>
+              <VehicleForm addVehicle={addVehicle} />
+            </Box>
+          </Paper>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Paper elevation={3}>
+            <Box padding={2}>
+              <Typography variant="h6" gutterBottom sx={{paddingBottom: '16px' }}>
+                Top Rated Vehicles
+              </Typography>
+              <VehicleCard vehicles={vehicles} />
+            </Box>
+          </Paper>
+        </Grid>
+        <Grid item xs={12}>
+          <Paper elevation={3}>
+            <Box padding={2}>
+              <Typography variant="h6" gutterBottom>
+                Vehicle List
+              </Typography>
+              <VehicleList 
+                vehicles={vehicles}
+                deleteVehicle={deleteVehicle}
+                updateVehicle={updateVehicle}
+                updateVehicleRating={updateVehicleRating}
+              />
+            </Box>
+          </Paper>
+        </Grid>
+        <Grid item xs={12}>
+          <Paper elevation={3}>
+            <Box padding={2}>
+              <Typography variant="h6" gutterBottom>
+                Make a Reservation
+              </Typography>
+              <ReservationForm 
+                reservations={reservations} 
+                setReservations={setReservations} 
+                vehicles={vehicles}
+                addReservation={addReservation}  
+                updateVehicle={updateVehicle} 
+              />
+            </Box>
+          </Paper>
+        </Grid>
+        <Grid item xs={12}>
+          <Paper elevation={3}>
+            <Box padding={2}>
+              <Typography variant="h6" gutterBottom>
+                Reservation List
+              </Typography>
+              <ReservationTable 
+                reservations={reservations} 
+                vehicles={vehicles} 
+                updateReservation={updateReservation} 
+                updateVehicleAvailability={updateVehicleAvailability} 
+                updateVehicleRating={updateVehicleRating}
+              />
+            </Box>
+          </Paper>
+        </Grid>
+      </Grid>
+    </Container>
   );
 }
 
 export default App;
+
 
 
 

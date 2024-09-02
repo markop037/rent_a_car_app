@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextField, Button, MenuItem } from '@mui/material';
+import { TextField, Button, MenuItem, Box, Typography } from '@mui/material';
 
 function ReservationForm({ reservations, setReservations, vehicles, updateVehicle }) {
   const [vehicleId, setVehicleId] = useState('');
@@ -47,13 +47,34 @@ function ReservationForm({ reservations, setReservations, vehicles, updateVehicl
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <Box 
+      component="form" 
+      onSubmit={handleSubmit} 
+      sx={{ 
+        display: 'flex', 
+        flexDirection: 'column', 
+        alignItems: 'center', 
+        gap: 2, 
+        padding: 3, 
+        border: '1px solid #ccc', 
+        borderRadius: 2, 
+        maxWidth: 400, 
+        margin: '0 auto',
+        boxShadow: 3
+      }}
+    >
+      <Typography variant="h5" gutterBottom>
+        Reserve a Vehicle
+      </Typography>
       <TextField
         select
         label="Select Vehicle by ID"
         value={vehicleId}
         onChange={(e) => setVehicleId(e.target.value)}
         required
+        fullWidth
+        variant="outlined"
+        margin="normal"
       >
         {vehicles.map(vehicle => (
           <MenuItem key={vehicle.id} value={vehicle.id}>
@@ -67,6 +88,9 @@ function ReservationForm({ reservations, setReservations, vehicles, updateVehicl
         value={pickUpDate} 
         onChange={(e) => setPickUpDate(e.target.value)} 
         required 
+        fullWidth
+        variant="outlined"
+        margin="normal"
         InputLabelProps={{ shrink: true }} 
       />
       <TextField 
@@ -75,16 +99,26 @@ function ReservationForm({ reservations, setReservations, vehicles, updateVehicl
         value={returnDate} 
         onChange={(e) => setReturnDate(e.target.value)} 
         required 
+        fullWidth
+        variant="outlined"
+        margin="normal"
         InputLabelProps={{ shrink: true }} 
       />
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <Button type="submit" variant="contained" color="primary">
+      {error && <Typography color="error" variant="body2">{error}</Typography>}
+      <Button 
+        type="submit" 
+        variant="contained" 
+        color="primary"
+        fullWidth
+        sx={{ mt: 2 }}
+      >
         Reserve
       </Button>
-    </form>
+    </Box>
   );
 }
 
 export default ReservationForm;
+
 
 
